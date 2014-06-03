@@ -1,0 +1,30 @@
+import groovy.json.JsonSlurper
+
+
+task generatePokemonFiles(type: PokemonConverter) {
+    pokemonsSrc = file("src/pokemons.json")
+    separator = ":" //change me affect input
+    outputDir = file("$buildDir/pokemons")
+}
+
+class PokemonConverter extends DefaultTask {
+
+    @InputFile
+    File pokemonsSrc;
+
+    @Input
+    String separator;
+
+    @OutputDirectory
+    File outputDir;
+
+    @TaskAction
+    public void convertPokemons() {
+        def json = new JsonSlurper().parse(new FileReader(pokemonsSrc))
+        json.pokemons.each { pokemon ->
+            def pokemonFile = new File(outputDir, "${pokemon.name}.txt")
+            pokemonFile.text = "power${separator} ${pokemon.power}"
+        }
+    }
+
+}

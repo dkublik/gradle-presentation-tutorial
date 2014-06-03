@@ -1,0 +1,28 @@
+task hello {
+    println 'Hello configuration phase'
+    doLast {
+        println 'Hello in the morning!'
+    }
+    doFirst {
+        println 'Hello in the evening'
+    }
+    doLast {
+        println 'Hello in the night!'
+    }
+}
+
+task goodbye(dependsOn: 'hello') << {
+    println 'goodbye!!!'
+}
+
+gradle.projectsEvaluated { gradle ->
+	tasks.each { task ->
+		task.doFirst {
+			ext.before = System.currentTimeMillis()
+		}
+		task.doLast {
+			ext.after = System.currentTimeMillis()
+			println "--------- exec time: ${after - before} ms"
+		}
+	}
+}

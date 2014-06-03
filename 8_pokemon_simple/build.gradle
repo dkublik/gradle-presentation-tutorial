@@ -1,0 +1,11 @@
+import groovy.json.JsonSlurper
+
+
+task generatePokemonFiles() << {
+    def outputDir = mkdir("$buildDir/pokemons")
+    def json = new JsonSlurper().parse(new FileReader(file("src/pokemons.json")))
+    json.pokemons.each { pokemon ->
+        def pokemonFile = new File(outputDir, pokemon.name + ".txt")
+        pokemonFile.text = "power: ${pokemon.power}"
+    }
+}

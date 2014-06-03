@@ -1,0 +1,14 @@
+ext.skipHello = true
+
+task hello << {
+    println getSomeMsg()
+}
+
+hello.onlyIf {
+	!project.hasProperty('skipHello')
+}
+
+String getSomeMsg() {
+    return "hello from method"
+}
+

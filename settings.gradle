@@ -1,0 +1,10 @@
+include ':1_hello',
+		':2_build_phases',
+		':3_groovy',
+		':4_dynamic_tasks',
+		':5_task_types',
+		':6_simple_build_file',
+		':7_dependencies',
+		':8_pokemon_simple',
+		':9_pokemon_up2date'
+		

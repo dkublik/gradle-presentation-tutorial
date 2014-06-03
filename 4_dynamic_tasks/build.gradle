@@ -1,0 +1,7 @@
+["6am", "9am", "3pm"].each { time ->
+    task "hello_at_$time" {
+        doLast {
+            println "Hello at $time am!"
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "pokemons": [
+        {
+            "name": "pikaczu",
+            "power": "lighting"
+        },
+        {
+            "name": "charmander",
+            "power": "fire"
+        },
+        {
+            "name": "squirtle",
+            "power": "water"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+task welcomeVivus(type: WelcomingTask) {
+    guest = "GUG"
+}
+
+class WelcomingTask extends DefaultTask {
+
+    String guest
+
+    @TaskAction
+    public void welcome() {
+        println "hello " + guest
+    }
+}
